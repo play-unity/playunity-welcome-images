@@ -7,7 +7,7 @@ const { PlayUnityImage, GTAImage, RedDeadImage } = require('playunity-welcome-im
 
 client.on('guildMemberAdd', async (member) => {
 
-    const image = new PlayUnityImage(member);
+    const image = new PlayUnityImage(member, member.guild.memberCount);
     const buffer = await image.buffer();
     
     client.channels.cache.get('ID').send(buffer);

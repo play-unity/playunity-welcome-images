@@ -8,13 +8,15 @@ export class PlayUnityImage {
     private canvas: Canvas;
     private context: CanvasRenderingContext2D;
     private member: GuildMember;
+    private joinPlace: string;
 
-    constructor (member: GuildMember) {
+    constructor (member: GuildMember, joinPlace: number|string) {
 
         this.canvas = createCanvas(1022, 448);
         this.context = this.canvas.getContext('2d');
 
         this.member = member;
+        this.joinPlace = joinPlace.toString();
 
     }
 
@@ -81,10 +83,10 @@ export class PlayUnityImage {
 
         await this.applyBackground();
         await this.applyWelcomeText();
+        await this.applyJoinPlace(this.joinPlace);
 
-        const { joinPlace, avatarURL, username, discriminator } = Util.extractMemberInfos(this.member);
+        const { avatarURL, username, discriminator } = Util.extractMemberInfos(this.member);
 
-        await this.applyJoinPlace(joinPlace);
         await this.applyUsername(username, discriminator);
         await this.applyAvatarIcon(avatarURL);
 
