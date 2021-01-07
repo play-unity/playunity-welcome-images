@@ -50,6 +50,18 @@ export class PlayUnityImage {
 
     }
 
+    async applyUsername(username: string, discriminator: string) {
+
+        this.context.font = '28.47px PoppinsRegular';
+        this.context.fillStyle = '#FFFFFF';
+        this.context.fillText(`${username}`, 682, 340.22+28.47);
+
+        this.context.font = '17.95px PoppinsRegular';
+        this.context.fillStyle = '#FFFFFF';
+        this.context.fillText(`#${discriminator}`, 707.19, 370.07+17.95);
+
+    }
+
     async applyAvatarIcon (avatarURL: string) {
 
         this.context.beginPath();
@@ -60,11 +72,9 @@ export class PlayUnityImage {
         this.context.stroke();
         this.context.closePath();
         this.context.clip();
-        console.log(avatarURL)
         const avatar = await loadImage(avatarURL);
-        this.context.drawImage(avatar, 33, 71, 104, 124, 21, 20, 87, 104);
+        this.context.drawImage(avatar, 628, radius, (radius*2)+15, (radius*2)+15);
 
-        console.log('applied')
     }
 
     async buffer () {
@@ -75,6 +85,7 @@ export class PlayUnityImage {
         const { joinPlace, avatarURL, username, discriminator } = Util.extractMemberInfos(this.member);
 
         await this.applyJoinPlace(joinPlace);
+        await this.applyUsername(username, discriminator);
         await this.applyAvatarIcon(avatarURL);
 
         return await this.canvas.toBuffer();
