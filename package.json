@@ -2,7 +2,7 @@
   "name": "playunity-welcome-images",
   "version": "1.0.1",
   "description": "Welcome images used in the PlayUnity servers",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "author": "Androz2091 <androz2091@gmail.com>",
   "license": "MIT",
   "files": [
