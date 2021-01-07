@@ -5,16 +5,21 @@
   "main": "dist/index.js",
   "author": "Androz2091 <androz2091@gmail.com>",
   "license": "MIT",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
-    "build": "tsc && yarn run copy:assets && yarn run copy:fonts",
-    "copy:assets": "cp -r 'assets' 'dist'",
-    "copy:fonts": "cp -r 'fonts' 'dist'"
+    "prepare": "npm run build",
+    "build": "tsc && npm run copy:assets && yarn run copy:fonts",
+    "copy:assets": "cp -r 'assets' 'lib'",
+    "copy:fonts": "cp -r 'fonts' 'lib'"
   },
   "dependencies": {
     "canvas": "^2.6.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.20",
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "typescript": "^4.1.3"
   }
 }
